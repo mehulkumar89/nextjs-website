@@ -12,7 +12,7 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Loader2 } from "lucide-react"
 import {signIn} from "next-auth/react"
-const page = () => {
+const SignIn = () => {
   
   const [isSubmitting,setIsSubmitting]=useState(false)
   const { toast } = useToast()
@@ -118,4 +118,4 @@ const page = () => {
   )
 }
 
-export default page
+export default SignIn

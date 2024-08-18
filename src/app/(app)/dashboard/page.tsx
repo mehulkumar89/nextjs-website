@@ -15,7 +15,7 @@ import { Switch } from "@/components/ui/switch"
 import { Separator } from "@/components/ui/separator"
 import { Loader2, RefreshCcw } from "lucide-react"
 import MessageCard from "@/components/MessageCard"
-export const page = () => {
+const UserDashboard = () => {
   const [messages,setMessages]=useState<message[]>([])
   const [isLoading,setIsLoading]=useState(false)
   const [isSwitching,setIsSwitch]=useState(false)
@@ -51,7 +51,7 @@ export const page = () => {
     setIsSwitch(false)
   }
 
-},[setValue])
+},[setValue,toast])
 
   const fetchMessage= useCallback(async (refresh:boolean=false)=>{
      setIsLoading(true)
@@ -77,7 +77,7 @@ export const page = () => {
       setIsSwitch(false)
       setIsLoading(false)
      }
-  },[setIsLoading,setMessages])
+  },[setIsLoading,setMessages,toast])
 
    useEffect(()=>{
     if(!session || !session.user) return
@@ -183,4 +183,4 @@ export const page = () => {
   )
 }
  
-export default page
+export default UserDashboard
