@@ -19,7 +19,7 @@ export default function Home() {
    const {toast}=useToast()
    const Router=useRouter()
     const plugin = React.useRef(
-    Autoplay({ delay: 2000, stopOnInteraction:false })
+    Autoplay({ delay: 2000})
     )
     const handleChange= (event:React.ChangeEvent<HTMLInputElement>)=>{
         setname(event.target.value)
@@ -47,14 +47,13 @@ export default function Home() {
        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
        <Carousel
       plugins={[plugin.current]}
-      className="w-full max-w-xs text-black ml-40"
-      onMouseEnter={plugin.current.stop}
-      onMouseLeave={plugin.current.reset}
+      className="w-full max-w-xs text-black ml-2 md:ml-40"
+      
     >
       <CarouselContent>
         {value.map((message, index) => (
           <CarouselItem key={index}>
-            <div className="p-1">
+            <div className="p-0.5">
               <Card>
                 <CardContent className="flex aspect-square items-center justify-center p-6">
                   <span className="text-2xl font-semibold">{message.content}</span>
@@ -64,16 +63,15 @@ export default function Home() {
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
     </Carousel> 
     <div className="flex w-full max-w-sm items-center space-x-2 text-black">
       <Input type="email" placeholder="Enter relative/friend Name" onChange={handleChange}/>
       <Button onClick={handleSubmit}>Send Messages</Button>
     </div>
     </div>
-    <p className="mt-6 text-center mb-6">Created By Mehul Kumar| Copyright @2024</p>
-           
+    <footer className='mt-6 position:absolute bottom-0 p-4 shadow-md bg-slate-950 text-white w-full text-center '>
+    Created By Mehul Kumar| Copyright @2024
+    </footer>
     </div>     
        
   )

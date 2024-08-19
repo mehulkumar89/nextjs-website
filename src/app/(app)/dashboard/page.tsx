@@ -68,7 +68,7 @@ const UserDashboard = () => {
      } catch(error){
       const axiosError= error as AxiosError<ApiResponse>
       toast({
-        title:"error",
+        title:"Trying to fetch Messages...",
         description:axiosError.response?.data.message || "failed to fetch message setting",
         variant:"destructive"
       })
@@ -123,6 +123,7 @@ const UserDashboard = () => {
    }
   
    return (
+    <>
     <div className="my-8 mx-4  md:mx-8 lg:mx-auto p-6 rounded w-full max-w-6xl">
       <h1 className="text-4xl font-bold mb-4">User Dashboard</h1>
 
@@ -180,6 +181,10 @@ const UserDashboard = () => {
         )}
       </div>
     </div>
+    <footer className='mt-6 position:absolute bottom-0 p-4 shadow-md bg-slate-950 text-white w-full text-center '>
+    Created By Mehul Kumar| Copyright @2024
+   </footer>
+   </>
   )
 }
  

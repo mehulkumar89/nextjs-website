@@ -11,7 +11,8 @@ const Navbar = () => {
   const user:User=session?.user
 
   return (
-    <nav className='p-4 shadow-md'>
+    <>
+    <nav className='p-4 shadow-md bg-slate-950 text-white'>
         <div className='container mx-auto flex flex-col md:flex-row justify-between items-center'>
             <a className='text-xl font-bold mb-4 md:mb-0' href="#">Mystry Message </a>
             <a className='text-xl mb-4 md:mb-0' href="/">Home</a>
@@ -30,6 +31,8 @@ const Navbar = () => {
             }
         </div>
     </nav>
+    
+    </>
   )
 }
 

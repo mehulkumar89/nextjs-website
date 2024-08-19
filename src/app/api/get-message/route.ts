@@ -29,10 +29,18 @@ export async function GET(request:Request){
         {$sort:{'messages.createdAt':-1}},
         {$group:{_id:'$_id',messages:{$push:'$messages'}}}
       ])  
-      if(!Find_user || Find_user.length===0){
+      if(!Find_user){
         return Response.json({
             success:false,
             message:'User Not Found'
+        },{
+            status:401
+        })
+      }
+      if(Find_user.length==0){
+        return Response.json({
+            success:false,
+            message:'No Messages Found'
         },{
             status:401
         })
