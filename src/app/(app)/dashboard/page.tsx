@@ -195,8 +195,9 @@ const UserDashboard = () => {
         )}
       </div>
       {messages.length>0 &&(
-        <div className="flex items-center gap-6 mt-4">
+        <div className="flex items-center justify-center gap-6 mt-6">
         <Button onClick={handlePrev} disabled={currentPages===1}>Prev</Button>
+        <span className="text-lg font-semibold">{currentPages} OF {total_page}</span>
         <Button onClick={handleNext} disabled={currentPages===total_page}>Next</Button>
         </div>
       )}
