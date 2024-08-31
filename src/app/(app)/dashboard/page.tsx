@@ -19,7 +19,21 @@ const UserDashboard = () => {
   const [messages,setMessages]=useState<message[]>([])
   const [isLoading,setIsLoading]=useState(false)
   const [isSwitching,setIsSwitch]=useState(false)
+  const [currentPages,setCurrentPages]=useState(1)
+  const perPages=4;
+  const lastIndex=currentPages*perPages
+  const startingIndex=lastIndex-perPages
+  const total_page=Math.ceil(messages.length/perPages)
+  const arr=messages.slice(startingIndex,lastIndex)
   const {toast} =useToast()
+
+  const handlePrev=()=>{
+      setCurrentPages((prev)=>Math.max(prev-1,1))
+  }
+
+  const handleNext=()=>{
+      setCurrentPages((prev)=>Math.min(prev+1,total_page))
+  }
 
   const handleDeleteMessage=(messageId:string)=>{
     setMessages(messages.filter((message)=> 
@@ -169,7 +183,7 @@ const UserDashboard = () => {
       </Button>
       <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-6">
         {messages.length > 0 ? (
-          messages.map((message, index) => (
+          arr.map((message, index) => (
             <MessageCard
               key={message._id as string}
               message={message}
@@ -180,6 +194,12 @@ const UserDashboard = () => {
           <p>No messages to display.</p>
         )}
       </div>
+      {messages.length>0 &&(
+        <div className="flex items-center gap-6 mt-4">
+        <Button onClick={handlePrev} disabled={currentPages===1}>Prev</Button>
+        <Button onClick={handleNext} disabled={currentPages===total_page}>Next</Button>
+        </div>
+      )}
     </div>
     <footer className='mt-6 position:absolute bottom-0 p-4 shadow-md bg-slate-950 text-white w-full text-center '>
     Created By Mehul Kumar| Copyright @2024
